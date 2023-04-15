@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="text-align: center; margin-top: 100px">
+      <p>ODAKLAN!</p>
+      <p>25:00</p>
+      <button onclick="start()">Basla</button>
+      <button onclick="stop()">Dur</button>
+      <button onclick="restart()">Sifirla</button>
+      <button onclick="mola()">Mola</button>
+    </div>
+  </body>
+  <script>
+    var myTime = 25 * 60;
+    var interval;
+    var time = document.getElementById("time");
+
+    function start() {
+      interval = setInverval(countDown, 1000);
+    }
+
+    function stop() {
+      clearInterval(interval);
+    }
+
+    function restart() {
+      myTime = 25 * 60;
+      var minute = Math.floor(myTime / 60);
+      var seconds = myTime - minute * 60;
+      time.innerHTML = "${minute}:${seconds}";
+      clearInterval(interval);
+    }
+
+    function mola() {
+      myTime = 5 * 60;
+      var minute = Math.floor(myTime / 60);
+      var seconds = myTime - minute * 60;
+      time.innerHTML = "${minute}:${seconds}";
+      clearInterval(interval);
+    }
+    function countDown() {
+      myTime -= 1;
+      var minute = Math.floor(myTime / 60);
+      var seconds = myTime - minute * 60;
+      time.innerHTML = "${minute}:${seconds}";
+    }
+  </script>
+</html>
